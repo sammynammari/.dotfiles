@@ -15,10 +15,3 @@ alias lal='ls -al'
 alias sl='ls'
 alias cl='clear'
 
-
-# database routes
-drawbridge='data-team-drawbridge.elb.z.premise.is:8888'
-bagheera='http://prod-bagheera.z.premise.is:8888'
-
-# python
-export PYTHONPATH=$PYTHONPATH:~/premise/grumpy-bear
