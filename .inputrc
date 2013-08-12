@@ -1,6 +1,6 @@
 # See http://cnswww.cns.cwru.edu/~chet/readline/readline.html for details.
 
-#set completion-ignore-case on
+set completion-ignore-case on
 set show-all-if-ambiguous on
 
 # never ring the terminal bell (default: audible)
