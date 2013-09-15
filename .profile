@@ -7,6 +7,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias csv='column -s , -t'
+
 alias tmux="TERM=screen-256color-bce tmux"
 
 alias la='ls -a'

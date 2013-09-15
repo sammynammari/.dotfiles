@@ -22,6 +22,8 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'derekwyatt/vim-scala'
+
 "let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
@@ -113,39 +115,13 @@ vmap <Leader>a[ :Tabularize /[<CR>
 nmap <Leader>a] :Tabularize /]<CR>
 vmap <Leader>a] :Tabularize /]<CR>
 
+" fix Scala stuff
+augroup scala
+    autocmd!
+    autocmd BufNewFile,BufRead *{.scala} :setlocal filetype=scala syntax=scala
+augroup END
+
 """"" Duck remap stuff
-" Switching splits
-  noremap <C-j> <C-W>j
-  noremap <C-k> <C-W>k
-  noremap <C-l> <C-W>l
-  noremap <C-h> <C-W>h
-
-  noremap <C-Up>    <C-W>k
-  noremap <C-Down>  <C-W>j
-  noremap <C-Left>  <C-W>h
-  noremap <C-Right>  <C-W>l
-
-  " up/down within a single wrapped line
-  nnoremap <Up>  gk
-  nnoremap <Down> gj
-  vnoremap <Up>  gk
-  vnoremap <Down> gj
-  inoremap <Up>  <C-o>gk
-  inoremap <Down> <C-o>gj
-
-  " ALT+(+/-) to resize buffer
-  noremap <A-k>  <C-w>+
-  noremap <A-j>  <C-w>-
-  noremap <A-h>  <C-w><lt>
-  noremap <A-l>  <C-w>>
-
-  " change directory to that of current file
-  noremap <leader>cd  :cd %:p:h<CR>:pwd<CR>
-
-  " move line up/down
-  nnoremap  <C-A-j>  :m+<CR>
-  nnoremap  <C-A-k>  :m--<CR>
-
   " relative line numbers
   noremap <leader>ln  :call ToggleRelativeLineNumbers()<CR>
   function! ToggleRelativeLineNumbers()
@@ -156,38 +132,73 @@ vmap <Leader>a] :Tabularize /]<CR>
     endif
   endfunction
 
+  " delete surrounding function
+  nnoremap <leader>dsf m`F(Bdwxf)x``
+
+  " change directory to that of current file
+  noremap <leader>cd  :cd %:p:h<CR>:pwd<CR>
+
   " clear highlighted search term
   nnoremap <silent> <Esc> :nohlsearch<CR>
   nnoremap <silent> <C-c> :nohlsearch<CR>
 
-  " quicker scroll up/down
-  noremap <C-e> 3<C-e>
-  noremap <C-y> 3<C-y>
+" Switching splits
+" noremap <C-j> <C-W>j
+" noremap <C-k> <C-W>k
+" noremap <C-l> <C-W>l
+" noremap <C-h> <C-W>h
 
-  " start binding window scrolling together
-  noremap <leader>sb  :set scrollbind!<CR>
+" noremap <C-Up>    <C-W>k
+" noremap <C-Down>  <C-W>j
+" noremap <C-Left>  <C-W>h
+" noremap <C-Right>  <C-W>l
 
-  " Don't use Shift+direction
-  noremap <S-Down>  <Down>
-  noremap <S-Up>    <Up>
+" " up/down within a single wrapped line
+" nnoremap <Up>  gk
+" nnoremap <Down> gj
+" vnoremap <Up>  gk
+" vnoremap <Down> gj
+" inoremap <Up>  <C-o>gk
+" inoremap <Down> <C-o>gj
 
-  " start/end of line in insert mode
-  inoremap <C-a>  <C-o>^
-  inoremap <C-e>  <C-o>$
+" " ALT+(+/-) to resize buffer
+" noremap <A-k>  <C-w>+
+" noremap <A-j>  <C-w>-
+" noremap <A-h>  <C-w><lt>
+" noremap <A-l>  <C-w>>
 
-  " previous/next word in insert mode
-  inoremap <C-f>  <C-o>w
-  inoremap <C-b>  <C-o>b
 
-  " alternatives to arrow keys in insert mode (steps on switch split keys)
-  " inoremap <C-j>  <Down>
-  " inoremap <C-k>  <Up>
-  " inoremap <C-h>  <Left>
-  " inoremap <C-l>  <Right>
+" " move line up/down
+" nnoremap  <C-A-j>  :m+<CR>
+" nnoremap  <C-A-k>  :m--<CR>
 
-  " Disable help by F1
-  noremap <F1> <Nop>
-  inoremap <F1> <Nop>
 
-  " delete surrounding function
-  nnoremap <leader>dsf m`F(Bdwxf)x``
+" " quicker scroll up/down
+" noremap <C-e> 3<C-e>
+" noremap <C-y> 3<C-y>
+
+" " start binding window scrolling together
+" noremap <leader>sb  :set scrollbind!<CR>
+
+" " Don't use Shift+direction
+" noremap <S-Down>  <Down>
+" noremap <S-Up>    <Up>
+
+" " start/end of line in insert mode
+" inoremap <C-a>  <C-o>^
+" inoremap <C-e>  <C-o>$
+
+" " previous/next word in insert mode
+" inoremap <C-f>  <C-o>w
+" inoremap <C-b>  <C-o>b
+
+" " alternatives to arrow keys in insert mode (steps on switch split keys)
+" " inoremap <C-j>  <Down>
+" " inoremap <C-k>  <Up>
+" " inoremap <C-h>  <Left>
+" " inoremap <C-l>  <Right>
+
+" " Disable help by F1
+" noremap <F1> <Nop>
+" inoremap <F1> <Nop>
+
