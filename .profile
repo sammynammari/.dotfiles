@@ -1,7 +1,14 @@
+# add these to the beginning of the path so that Homebrew's python gets loaded first
 export PATH=/usr/local/bin:$PATH
-export TERM=xterm-256color
+export PATH=/usr/local/share/python:$PATH
 
-source /usr/local/bin/virtualenvwrapper.sh
+# set gnuplot to use x11 instead of aquaterm
+export GNUTERM='x11'
+
+
+#export TERM=xterm-256color
+
+#source /usr/local/bin/virtualenvwrapper.sh
 
 alias ..='cd ..'
 alias ...='cd ../..'

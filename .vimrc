@@ -9,8 +9,6 @@ Bundle 'gmarik/vundle'
 filetype plugin indent on
 
 
-
-
 " Bundles
 Bundle 'croaky/vim-colors-github'
 "Bundle 'w0ng/vim-github-theme'
@@ -45,31 +43,31 @@ if has('gui_macvim')
 endif
 
 " basic stuff
-let mapleader=','     " set leader to ,
-syn on                " syntax highlighting
-set nu                " line numbers
-set tabstop=4         " size of tab
-set softtabstop=4     " size of spaces-tabs
-set shiftwidth=4      " shift size
-set autoindent        " indent at same level as previous line
-set expandtab         " tabs are spaces, not tabs
-set scrolloff=3       " minimum lines to keep above/below cursor
-set showmatch         " show matching brace when highlighting it
-set showcmd " show command in last line of screen
+let mapleader=','                " set leader to ,
+syn on                           " syntax highlighting
+set nu                           " line numbers
+set tabstop=4                    " size of tab
+set softtabstop=4                " size of spaces-tabs
+set shiftwidth=4                 " shift size
+set autoindent                   " indent at same level as previous line
+set expandtab                    " tabs are spaces, not tabs
+set scrolloff=3                  " minimum lines to keep above/below cursor
+set showmatch                    " show matching brace when highlighting it
+set showcmd                      " show command in last line of screen
 set formatoptions=rq
-set mouse=a           " mouse in terminal vim
-set nowrap            " text doesn't autowrap
+set mouse=a                      " mouse in terminal vim
+set nowrap                       " text doesn't autowrap
 set pastetoggle=<F2>
-set clipboard=unnamed " vim buffer and system clipboard are shared
-set t_Co=256          " 256 terminal colors
-set nospell           " no spellcheck
-set hidden            " lets you open other buffers without saving the current one
-set wildmenu          " shows list instead of just autocompleting
+set clipboard=unnamed            " vim buffer and system clipboard are shared
+set t_Co=256                     " 256 terminal colors
+set nospell                      " no spellcheck
+set hidden                       " lets you open other buffers without saving the current one
+set wildmenu                     " shows list instead of just autocompleting
 set wildignore=*.swp,*.bak,*.pyc
-set incsearch         " find as you search
-set hlsearch          " highlight search
-set ignorecase        " ignore search case
-set foldmethod=indent " fold based on indents in code
+set incsearch                    " find as you search
+set hlsearch                     " highlight search
+set ignorecase                   " ignore search case
+set foldmethod=indent            " fold based on indents in code
 set smartcase
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
@@ -87,11 +85,8 @@ vnoremap > >gv
 
 " code folding shortcuts
 
-
-
 " noh more easily
 nnoremap <leader><space> :noh<cr>
-
 
 " Tabularize
 nmap <Leader>a& :Tabularize /&<CR>
