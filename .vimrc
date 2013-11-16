@@ -11,16 +11,17 @@ filetype plugin indent on
 
 " Bundles
 Bundle 'croaky/vim-colors-github'
-"Bundle 'w0ng/vim-github-theme'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'godlygeek/tabular'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'mileszs/ack.vim'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'derekwyatt/vim-scala'
+" Bundle 'w0ng/vim-github-theme'
+" Bundle 'Lokaltog/powerline'
 
 "let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
@@ -29,8 +30,9 @@ let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_color_change_percent=3
 
 
-" non-gvim color
-color github
+let g:solarized_bold=1
+let g:solarized_italic=1
+let g:solarized_underline=1
 
 if has('gui_macvim')
     " best code font ever
@@ -38,8 +40,10 @@ if has('gui_macvim')
     set transparency=0
 
     " color scheme
-    color solarized
+    colorscheme solarized
     set bg=dark
+else
+    colorscheme github
 endif
 
 " basic stuff
@@ -109,6 +113,10 @@ nmap <Leader>a[ :Tabularize /[<CR>
 vmap <Leader>a[ :Tabularize /[<CR>
 nmap <Leader>a] :Tabularize /]<CR>
 vmap <Leader>a] :Tabularize /]<CR>
+nmap <Leader>a% :Tabularize /%<CR>
+nmap <Leader>a% :Tabularize /%<CR>
+vmap <Leader>a; :Tabularize /;<CR>
+vmap <Leader>a; :Tabularize /;<CR>
 
 " fix Scala stuff
 augroup scala
@@ -134,8 +142,8 @@ augroup END
   noremap <leader>cd  :cd %:p:h<CR>:pwd<CR>
 
   " clear highlighted search term
-  nnoremap <silent> <Esc> :nohlsearch<CR>
-  nnoremap <silent> <C-c> :nohlsearch<CR>
+" nnoremap <silent> <Esc> :nohlsearch<CR>
+" nnoremap <silent> <C-c> :nohlsearch<CR>
 
 " Switching splits
 " noremap <C-j> <C-W>j
