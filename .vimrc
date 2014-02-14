@@ -43,7 +43,8 @@ if has('gui_macvim')
     colorscheme solarized
     set bg=dark
 else
-    colorscheme github
+    colorscheme solarized
+    set bg=light
 endif
 
 " basic stuff
@@ -80,6 +81,7 @@ set encoding=utf-8
 set history=1000
 set undolevels=1000
 set laststatus=2                               " always show statusbar. useful when using powerline
+filetype indent on
 
 " fast buffer switching
 nnoremap <leader>n :bn<CR>
@@ -115,9 +117,20 @@ vmap <Leader>a[ :Tabularize /[<CR>
 nmap <Leader>a] :Tabularize /]<CR>
 vmap <Leader>a] :Tabularize /]<CR>
 nmap <Leader>a% :Tabularize /%<CR>
-nmap <Leader>a% :Tabularize /%<CR>
+vmap <Leader>a% :Tabularize /%<CR>
+nmap <Leader>a; :Tabularize /;<CR>
 vmap <Leader>a; :Tabularize /;<CR>
-vmap <Leader>a; :Tabularize /;<CR>
+
+" compile latex
+nmap <Leader>cc :!pdflatex %<CR><CR>
+nmap <Leader>co :!pdflatex %<CR><CR> :!open %:r.pdf<CR><CR>
+
+" environment expansions for latex
+autocmd BufNewFile,BufRead *.tex :ab bal \begin{align*}<CR><CR>\end{align*}<UP>
+autocmd BufNewFile,BufRead *.tex :ab bfig \begin{figure}[htbp]<CR>\centering<CR>\includegraphics[width=4in]{}<CR>\caption{}<CR>\end{figure}
+autocmd BufNewFile,BufRead *.tex :ab bdoc \documentclass{article}<CR>\usepackage{le_math}<CR><CR>\begin{document}<CR><CR>\end{document}<UP>
+
+
 
 " fix Scala stuff
 augroup scala
