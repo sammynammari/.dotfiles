@@ -120,6 +120,10 @@ nmap <Leader>a% :Tabularize /%<CR>
 vmap <Leader>a% :Tabularize /%<CR>
 nmap <Leader>a; :Tabularize /;<CR>
 vmap <Leader>a; :Tabularize /;<CR>
+nmap <Leader>a$ :Tabularize /$<CR>
+vmap <Leader>a$ :Tabularize /$<CR>
+nmap <Leader>a( :Tabularize /(<CR>
+vmap <Leader>a( :Tabularize /(<CR>
 
 " compile latex
 nmap <Leader>cc :!pdflatex %<CR><CR>
