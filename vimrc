@@ -1,12 +1,39 @@
-" Vundle stuff
-set nocompatible " be iMproved
-filetype off     " required!
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" let Vundle manage Vundle - required!
-Bundle 'gmarik/vundle'
-filetype plugin indent on
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'git://git.wincent.com/command-t.git'
+
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList          - list configured plugins
+" :PluginInstall(!)    - install (update) plugins
+" :PluginSearch(!) foo - search (or refresh cache first) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 
 " Bundles
@@ -19,7 +46,13 @@ Bundle 'bling/vim-airline'
 Bundle 'mileszs/ack.vim'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'scrooloose/nerdtree'
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-fireplace'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'vim-scripts/paredit.vim'
 Bundle 'derekwyatt/vim-scala'
+
 " Bundle 'w0ng/vim-github-theme'
 " Bundle 'Lokaltog/powerline'
 
@@ -27,7 +60,7 @@ Bundle 'derekwyatt/vim-scala'
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_color_change_percent=3
+let g:indent_guides_color_change_percent=1
 
 
 let g:solarized_bold=1
@@ -44,7 +77,7 @@ if has('gui_macvim')
     set bg=dark
 else
     colorscheme solarized
-    set bg=light
+    set bg=dark
 endif
 
 " basic stuff
@@ -56,6 +89,7 @@ set softtabstop=4                              " size of spaces-tabs
 set shiftwidth=4                               " shift size
 set autoindent                                 " indent at same level as previous line
 set expandtab                                  " tabs are spaces, not tabs
+set backspace=indent,eol,start                 " let's you delete before the starting point in a line
 set scrolloff=3                                " minimum lines to keep above/below cursor
 set showmatch                                  " show matching brace when highlighting it
 set showcmd                                    " show command in last line of screen
@@ -125,6 +159,8 @@ vmap <Leader>a$ :Tabularize /$<CR>
 nmap <Leader>a( :Tabularize /(<CR>
 vmap <Leader>a( :Tabularize /(<CR>
 
+nmap <Leader>t :NERDTree<CR>
+
 " compile latex
 nmap <Leader>cc :!pdflatex %<CR><CR>
 nmap <Leader>co :!pdflatex %<CR><CR> :!open %:r.pdf<CR><CR>
@@ -134,6 +170,10 @@ autocmd BufNewFile,BufRead *.tex :ab bal \begin{align*}<CR><CR>\end{align*}<UP>
 autocmd BufNewFile,BufRead *.tex :ab bfig \begin{figure}[htbp]<CR>\centering<CR>\includegraphics[width=4in]{}<CR>\caption{}<CR>\end{figure}
 autocmd BufNewFile,BufRead *.tex :ab bdoc \documentclass{article}<CR>\usepackage{le_math}<CR><CR>\begin{document}<CR><CR>\end{document}<UP>
 
+" set foldlevel to open on file load
+" Note, perl automatically sets foldmethod in the syntax file
+autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
+autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
 
 " fix Scala stuff
