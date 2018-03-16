@@ -70,7 +70,7 @@ set wildignore=*.swp,*.bak,*.pyc
 set incsearch                                  " find as you search
 set hlsearch                                   " highlight search
 set ignorecase                                 " ignore search case
-set foldmethod=indent                          " fold based on indents in code
+set foldmethod=syntax                          " fold based on code
 set smartcase
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
@@ -122,12 +122,6 @@ nmap <Leader>a( :Tabularize /(<CR>
 vmap <Leader>a( :Tabularize /(<CR>
 
 nmap <Leader>t :NERDTree<CR>
-
-" set foldlevel to open on file load
-" Note, perl automatically sets foldmethod in the syntax file
-autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
-autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
-
 
 " fix Scala stuff
 augroup scala
