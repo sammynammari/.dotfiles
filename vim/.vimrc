@@ -81,6 +81,9 @@ set undolevels=1000
 set laststatus=2                               " always show statusbar. useful when using powerline
 filetype indent on
 
+autocmd Syntax scala,sbt normal zR
+
+
 " fast buffer switching
 nnoremap <leader>n :bn<CR>
 
