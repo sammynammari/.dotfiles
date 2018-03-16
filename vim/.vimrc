@@ -8,59 +8,27 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
 
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'git://git.wincent.com/command-t.git'
+" Bundles
+Plugin 'croaky/vim-colors-github'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-airline'
+Plugin 'mileszs/ack.vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'scrooloose/nerdtree'
 
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Bundle 'Lokaltog/powerline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
-
-" Bundles
-Bundle 'croaky/vim-colors-github'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'godlygeek/tabular'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-airline'
-Bundle 'mileszs/ack.vim'
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'scrooloose/nerdtree'
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-fireplace'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'vim-scripts/paredit.vim'
-Bundle 'derekwyatt/vim-scala'
-
-" Bundle 'w0ng/vim-github-theme'
-" Bundle 'Lokaltog/powerline'
-
-"let g:indent_guides_auto_colors = 0
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_color_change_percent=1
+" non-Plugin stuff after this line
 
 let g:solarized_bold=1
 let g:solarized_italic=1
@@ -155,15 +123,6 @@ vmap <Leader>a( :Tabularize /(<CR>
 
 nmap <Leader>t :NERDTree<CR>
 
-" compile latex
-nmap <Leader>cc :!pdflatex %<CR><CR>
-nmap <Leader>co :!pdflatex %<CR><CR> :!open %:r.pdf<CR><CR>
-
-" environment expansions for latex
-autocmd BufNewFile,BufRead *.tex :ab bal \begin{align*}<CR><CR>\end{align*}<UP>
-autocmd BufNewFile,BufRead *.tex :ab bfig \begin{figure}[htbp]<CR>\centering<CR>\includegraphics[width=4in]{}<CR>\caption{}<CR>\end{figure}
-autocmd BufNewFile,BufRead *.tex :ab bdoc \documentclass{article}<CR>\usepackage{le_math}<CR><CR>\begin{document}<CR><CR>\end{document}<UP>
-
 " set foldlevel to open on file load
 " Note, perl automatically sets foldmethod in the syntax file
 autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
@@ -177,15 +136,6 @@ augroup scala
 augroup END
 
 """"" Duck remap stuff
-  " relative line numbers
-  noremap <leader>ln  :call ToggleRelativeLineNumbers()<CR>
-  function! ToggleRelativeLineNumbers()
-    if (&relativenumber == 1)
-      set norelativenumber
-    else
-      set relativenumber
-    endif
-  endfunction
 
   " delete surrounding function
   nnoremap <leader>dsf m`F(Bdwxf)x``
